@@ -9,7 +9,6 @@ RUN npm install pm2@latest -g
 RUN mkdir -p /opt/uchiwa
 ADD . /opt/uchiwa
 RUN cd /opt/uchiwa; npm install
-RUN cd /opt/uchiwa; pm2 start app.js --name uchiwa
 
 EXPOSE 3000
-CMD ["pm2", "start", "/opt/uchiwa/app.js", "--no-daemon"]
+CMD ["cd", "/opt/uchiwa", "pm2", "start", "/opt/uchiwa/app.js", "--no-daemon", "--name", "uchiwa"]
